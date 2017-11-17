@@ -181,6 +181,44 @@
   </div>
 </template>
 
+<script>
+  // Объявляем переменные
+  var fireballSize = 22;
+  var wizardSpeed = 3;
+  var wizardWidth = 70;
+  var fireballSpeed;
+  var wizardHeight;
+  var left;
+  var width;
+  var height;
+  // Функция расчета скорости фааербола
+  var getFireballSpeed = function (left) {
+      if (left == true) {
+          fireballSpeed = 5;
+      }
+      else {
+          fireballSpeed = 2;
+      }
+    return(fireballSpeed);
+  };
+  // Функция расчета ширины мага
+  getWizardHeight = function (height) {
+      wizardHeight = 1.337 * wizardWidth;
+      return (wizardHeight);
+  };
+  // Функция расчета положения мага (высота)
+  var getWizardX = function (width) {
+      return ((width - wizardWidth) / 2);
+  };
+  // Функция расчета положения мага (высота)
+  var getWizardY = function (height) {
+      return ((height - wizardHeight) * 3 / 2);
+  };
+  // Вызов функций
+  getFireballSpeed (left);
+  getWizardHeight (wizardWidth);
+
+</script>
 <script src="js/game.js"></script>
 
 </body>
