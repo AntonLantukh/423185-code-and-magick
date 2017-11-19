@@ -13,10 +13,9 @@ window.renderStatistics = function (ctx, names, times) {
   // Параметры гистограммы
   var histogramHeight = 150;
   var histogramWidth = 40;
-  var histogramStep = 50;
-  var initialX = 120;
-  var initialY = 150;
-  var histogramColor = 'rgba(255, 0, 0, 1)';
+  var initialX = 150;
+  var indent = 90;
+  var lineHeight = 20;
   // Рассчитываем коэффициент для размером гистограммы
   var max = 0;
   for (var i = 0; i <= times.length - 1; i++) {
@@ -25,11 +24,17 @@ window.renderStatistics = function (ctx, names, times) {
     }
   }
   var step = histogramHeight / max;
-  // Рисуем гистограмму
-  var koeff = max - times[0] * step;
-  ctx.fillStyle = 'rgba(0, 0, 255, 0.9)';
-  ctx.fillRect(150, max * step - times[0] * step + 100, 40, times[0] * step);
-  ctx.fillRect(240, max * step - times[1] * step + 100, 40, times[1] * step);
-  ctx.fillRect(330, max * step - times[2] * step + 100, 40, times[2] * step);
-  ctx.fillRect(420, max * step - times[3] * step + 100, 40, times[3] * step);
+  // Вывод гистограммы через цикл
+  for (var j = 0; j <= times.length - 1; j ++) {
+    if (names[j] === 'Вы') {
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    }
+    else {
+      ctx.fillStyle = 'rgba(0, 0, 255, ' + Math.random() + ')';
+    }
+    ctx.fillRect(initialX + indent * j, max * step - times[j] * step + 100, histogramWidth, times[j] * step);
+    ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+    ctx.fillText(names[j], initialX + indent * j, histogramHeight + 100 + lineHeight);
+    ctx.fillText(Math.round(times[j]), initialX + indent * j, max * step - times[j] * step + 100 - lineHeight);
+  }
 };
