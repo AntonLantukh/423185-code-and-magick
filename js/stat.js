@@ -39,11 +39,10 @@ window.renderStatistics = function (ctx, names, times) {
   }
   var step = histogramHeight / max;
   // Вывод гистограммы через цикл
-  for (var j = 0; j <= times.length - 1; j ++) {
+  for (var j = 0; j <= times.length - 1; j++) {
     if (names[j] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-    }
-    else {
+    } else {
       ctx.fillStyle = 'rgba(0, 0, 255, ' + Math.random() + ')';
     }
     ctx.fillRect(initialX + indent * j, max * step - times[j] * step + 100, histogramWidth, times[j] * step);
