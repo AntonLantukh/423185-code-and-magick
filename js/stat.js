@@ -1,22 +1,36 @@
 window.renderStatistics = function (ctx, names, times) {
   // Рисуем тень для облака
   ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-  ctx.fillRect(110, 20, 420, 270);
+  ctx.beginPath();
+  ctx.moveTo(110, 20);
+  ctx.arcTo(110, 20, 530, 20, 30);
+  ctx.arcTo(530, 20, 530, 290, 30);
+  ctx.arcTo(530, 290, 110, 290, 30);
+  ctx.arcTo(110, 290, 110, 20, 30);
+  ctx.arcTo(110, 20, 530, 20, 30);
+  ctx.fill();
   // Рисуем само облако
   ctx.fillStyle = 'white';
-  ctx.fillRect(100, 10, 420, 270);
+  ctx.beginPath();
+  ctx.moveTo(100, 10);
+  ctx.arcTo(100, 10, 520, 10, 30);
+  ctx.arcTo(520, 10, 520, 280, 30);
+  ctx.arcTo(520, 280, 100, 280, 30);
+  ctx.arcTo(100, 280, 100, 10, 30);
+  ctx.arcTo(100, 10, 520, 10, 30);
+  ctx.fill();
   // Выводим финальное сообщение
   ctx.fillStyle = '#000';
   ctx.font = '16px PT Mono';
   ctx.fillText('Ура вы победили!', 120, 40);
-  ctx.fillText('Список результатов', 120, 60);
+  ctx.fillText('Список результатов:', 120, 60);
   // Параметры гистограммы
   var histogramHeight = 150;
   var histogramWidth = 40;
   var initialX = 150;
   var indent = 90;
   var lineHeight = 20;
-  // Рассчитываем коэффициент для размером гистограммы
+  // Рассчитываем коэффициент для размеров гистограммы
   var max = 0;
   for (var i = 0; i <= times.length - 1; i++) {
     if (times[i] > max) {
