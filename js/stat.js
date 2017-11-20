@@ -1,3 +1,5 @@
+'use strict';
+
 window.renderStatistics = function (ctx, names, times) {
   // Рисуем тень для облака
   ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
