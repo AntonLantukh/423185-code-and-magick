@@ -23,7 +23,7 @@ function renderWizard(wizardName, wizardSurname, wizardCoatColor, wizardEyesColo
       coatColor: wizardCoatColor[countRandom(0, 5)],
       eyesColor: wizardEyesColor[countRandom(0, 4)]
     };
-    wizardArray.push(wizardElement)
+    wizardArray.push(wizardElement);
   }
   return wizardArray;
 }
@@ -43,6 +43,6 @@ console.log(renderWizardSetup(renderWizard(firstName, secondName, coatColor, eye
 // Отрисовывем волшебников через вызов функции в цикле
 var fragment = document.createDocumentFragment();
 for (var i = 0; i < 4; i++) {
-  fragment.appendChild(renderWizardSetup(renderWizard(firstName, secondName, coatColor, eyesColor)));
+  fragment.appendChild(renderWizardSetup(renderWizard(firstName, secondName, coatColor, eyesColor)[i]));
 }
 setupContainer.appendChild(fragment);
