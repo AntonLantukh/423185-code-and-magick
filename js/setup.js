@@ -39,7 +39,6 @@ function renderWizardSetup(wizard) {
   wizardOutlook.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
   return wizardOutlook;
 }
-console.log(renderWizardSetup(renderWizard(firstName, secondName, coatColor, eyesColor)));
 // Отрисовывем волшебников через вызов функции в цикле
 var fragment = document.createDocumentFragment();
 for (var i = 0; i < 4; i++) {
