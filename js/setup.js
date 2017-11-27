@@ -16,6 +16,7 @@ var setupElement = document.querySelector('#similar-wizard-template').content.qu
 var setupContainer = document.querySelector('.setup-similar-list');
 var fragment = document.createDocumentFragment();
 
+
 // Показываем элементы на странице
 setupBlock.classList.remove('hidden');
 setupSimilarBlock.classList.remove('hidden');
@@ -27,7 +28,7 @@ for (var i = 0; i < 4; i++) {
 
 // Отрисовывем волшебников через вызов функции в цикле
 for (i = 0; i < 4; i++) {
-  fragment.appendChild(renderWizardSetup(wizardsArray));
+  fragment.appendChild(renderWizard(wizardsArray[i]));
 }
 setupContainer.appendChild(fragment);
 
@@ -42,8 +43,8 @@ function createWizard(name, surname, coat, eyes) {
   return wizardElement;
 }
 
-// Функция отображения волшебников
-function renderWizardSetup(wizard) {
+// Функция обработки внешнего вида волшебника
+function renderWizard(wizard) {
   var wizardOutlook = setupElement.cloneNode(true);
   wizardOutlook.querySelector('.setup-similar-label').textContent = wizard.name;
   wizardOutlook.querySelector('.wizard-coat').style.fill = wizard.coatColor;
