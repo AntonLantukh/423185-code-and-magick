@@ -21,13 +21,9 @@ var fragment = document.createDocumentFragment();
 setupBlock.classList.remove('hidden');
 setupSimilarBlock.classList.remove('hidden');
 
-// Наполняем массив волшебников
+// Наполняем массив волшебников и отрисовывем их через вызов функции в цикле
 for (var i = 0; i < 4; i++) {
   wizardsArray.push(createWizard(firstName, secondName, coatColor, eyesColor));
-}
-
-// Отрисовывем волшебников через вызов функции в цикле
-for (i = 0; i < 4; i++) {
   fragment.appendChild(renderWizard(wizardsArray[i]));
 }
 setupContainer.appendChild(fragment);
