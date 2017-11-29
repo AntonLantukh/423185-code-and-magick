@@ -1,5 +1,9 @@
 'use strict';
 
+// Объявляем константы
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
+
 // Ищем блок .setup и .setup-similar
 var setupBlock = document.querySelector('.setup');
 var setupSimilarBlock = document.querySelector('.setup-similar');
@@ -18,7 +22,6 @@ var fragment = document.createDocumentFragment();
 
 
 // Показываем элементы на странице
-setupBlock.classList.remove('hidden');
 setupSimilarBlock.classList.remove('hidden');
 
 // Наполняем массив волшебников и отрисовывем их через вызов функции в цикле
@@ -52,3 +55,61 @@ function renderWizard(wizard) {
 function range(min, max) {
   return Math.floor((Math.random() * (max - min)) + min);
 }
+
+// Обработчик событий
+var setupOpen = document.querySelector('.setup-open');
+var setupClose = document.querySelector('.setup-close');
+var setupInput = document.querySelector('.setup-user-name');
+var setupSubmit = document.querySelector('.setup-submit');
+
+var openPopup = function () {
+  setupBlock.classList.remove('hidden');
+  document.addEventListener('keydown', onPopupEscPress);
+};
+
+var closePopup = function () {
+  setupBlock.classList.add('hidden');
+  document.removeEventListener('keydown', onPopupEscPress);
+};
+
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    if (evt.target !== setupInput) {
+      closePopup();
+    } else {
+      return;
+    }
+  }
+};
+
+setupOpen.addEventListener('click', function () {
+  openPopup();
+});
+
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    openPopup();
+  }
+});
+
+setupClose.addEventListener('click', function () {
+  closePopup();
+});
+
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
+});
+
+setupSubmit.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  closePopup();
+});
+
+setupSubmit.addEventListener('keydown', function (evt) {
+  evt.preventDefault();
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
+});
